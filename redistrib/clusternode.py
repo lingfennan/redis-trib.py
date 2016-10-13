@@ -9,6 +9,8 @@ class ClusterNode(object):
         self.node_id = node_id
         host, port = latest_know_ip_address_and_port.split(':')
         self.host = host
+        if '@' in port:
+            port = port.split('@')[0]
         self.port = int(port)
         self.flags = flags.split(',')
         self.master_id = None if master_id == '-' else master_id

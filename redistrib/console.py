@@ -7,6 +7,8 @@ from . import __version__
 
 def _parse_host_port(addr):
     host, port = addr.split(':')
+    if '@' in port:
+        port = port.split('@')[0]
     return host, int(port)
 
 
